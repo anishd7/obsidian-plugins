@@ -1,0 +1,11 @@
+{
+	"id": "ai-chat-assistant",
+	"name": "AI Chat Assistant",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Chat with AI and integrate AI responses into your notes. Built-in AI assistant for enhanced note-taking.",
+	"author": "Your Name",
+	"authorUrl": "",
+	"fundingUrl": "",
+	"isDesktopOnly": false
+}

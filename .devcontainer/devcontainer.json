@@ -1,0 +1,78 @@
+{
+	"name": "Obsidian Plugin Development",
+	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.vscode-typescript-next",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.vscode-json",
+				"esbenp.prettier-vscode",
+				"formulahendry.auto-rename-tag",
+				"christian-kohler.path-intellisense",
+				"ms-vscode.references-view"
+			],
+			"settings": {
+				"typescript.preferences.quoteStyle": "single",
+				"typescript.preferences.importModuleSpecifier": "relative",
+				"typescript.updateImportsOnFileMove.enabled": "always",
+				"typescript.suggest.autoImports": true,
+				"typescript.suggest.completeFunctionCalls": true,
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true,
+					"source.organizeImports": true
+				},
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"files.eol": "\n",
+				"files.insertFinalNewline": true,
+				"files.trimTrailingWhitespace": true,
+				"eslint.validate": [
+					"javascript",
+					"typescript"
+				],
+				"eslint.workingDirectories": [
+					{
+						"mode": "auto"
+					}
+				],
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				}
+			}
+		}
+	},
+	"postStartCommand": "echo 'Obsidian Plugin Development Environment Ready!' && echo 'Run: npm install - to install dependencies' && echo 'Run: npm run dev - to start development mode with watch' && echo 'Run: npm run build - to build for production' && echo 'Run: npm run version - to bump version'",
+	"forwardPorts": [],
+	"mounts": [
+		"source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+	],
+	"workspaceFolder": "/workspace",
+	"remoteUser": "node",
+	"containerUser": "node",
+	"updateRemoteUserUID": true,
+	"shutdownAction": "stopContainer",
+	"onCreateCommand": {
+		"setup-git": "git config --global --add safe.directory /workspace",
+		"install-typescript": "npm install -g typescript@4.7.4",
+		"set-permissions": "sudo chown -R node:node /workspace"
+	},
+	"containerEnv": {
+		"NODE_ENV": "development",
+		"NPM_CONFIG_USERCONFIG": "/workspace/.npmrc"
+	},
+	"runArgs": [
+		"--init"
+	]
+} 
